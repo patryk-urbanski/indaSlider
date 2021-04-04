@@ -1,10 +1,10 @@
 import React from 'react';
 
-import Home from './views/Home';
+import TeamMates from './views/TeamMates';
 
 function App() {
   return (
-    <Home />
+    <TeamMates />
   );
 }
 

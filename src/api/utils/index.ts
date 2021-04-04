@@ -1,35 +1,18 @@
-import { ITask } from "../../types";
-
 type HttpMethod = "GET" | "POST" | "PUT" | "DELETE";
 
 interface Props {
     path: string,
     httpMethod?: HttpMethod,
-    body?: ITask,
-    formDataRequest?: {
-        method: HttpMethod,
-        body: FormData,
-        mode: RequestMode,
-        credentials: RequestCredentials,
-    }
 }
-
-export const generateFormDataRequest = (formData: FormData, method: HttpMethod) => {
-    return {
-        method: method,
-        body: formData,
-        mode: 'cors' as RequestMode,
-        credentials: 'same-origin' as RequestCredentials,
-    };
-};
 
 export const fetchFromApi = async ({
     path,
     httpMethod,
-    body,
-    formDataRequest,
 }: Props):Promise<any> => {
-    const requestObject: RequestInit = formDataRequest ? formDataRequest : { method: httpMethod, body: body && JSON.stringify(body) }
+
+    const requestObject: RequestInit = {
+        method: httpMethod,
+    };
     
     try {
         const response = await fetch(path, requestObject);

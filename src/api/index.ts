@@ -1,33 +1,15 @@
-import { fetchFromApi, generateFormDataRequest } from './utils';
-
-const apiUser = process.env.REACT_APP_API_USER;
+import { fetchFromApi } from './utils';
 
 const apiCalls = () => {
-    const getTasks = () => {
+    const getTeamMates = () => {
         return fetchFromApi({
-            path: `https://react.massivepixel.io/api/${apiUser}`,
+            path: `/teamMates`,
             httpMethod: 'GET',
         })
     };
 
-    const addEditTask = (id: string | number | null, formData: FormData) => {
-        return fetchFromApi({
-            path: `https://react.massivepixel.io/api/${apiUser}/${id}`,
-            formDataRequest: generateFormDataRequest(formData, 'POST'),
-        })
-    };
-
-    const deleteTask = (id: string | number) => {
-        return fetchFromApi({
-            path: `https://react.massivepixel.io/api/${apiUser}/${id}`,
-            httpMethod: 'DELETE',
-        })
-    };
-
     return {
-        getTasks,
-        addEditTask,
-        deleteTask,
+        getTeamMates
     }
 };
 

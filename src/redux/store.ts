@@ -1,20 +1,17 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
 import globalReducer, { initialState as globalInitialState } from '../features/globalStates/slice';
-import tasksReducer, { initialState as tasksInitialState } from '../features/tasks/slice';
-import refetchersReducer, { initialState as refetchersInitialState } from '../features/refetchers/slice';
+import teamMatesReducer, { initialState as teamMatesInitialState } from '../features/teamMates/slice';
 
 const initialState = {
     global: globalInitialState,
-    tasks: tasksInitialState,
-    refetchers: refetchersInitialState,
-}
+    teamMates: teamMatesInitialState,
+};
 
 export const store = configureStore({
     reducer: {
         global: globalReducer,
-        tasks: tasksReducer,
-        refetchers: refetchersReducer,
+        teamMates: teamMatesReducer,
     },
     preloadedState: initialState
 });
