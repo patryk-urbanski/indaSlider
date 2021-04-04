@@ -1,0 +1,1 @@
+export const randomPhotoSource = 'https://picsum.photos/200';

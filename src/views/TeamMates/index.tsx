@@ -1,8 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 
+import ErrorModal from '../../features/globalStates/ErrorModal';
+
+import { clearError } from '../../redux/methods/generic';
 import { getTeamMates } from '../../redux/methods/teamMates';
 import { RootState } from '../../redux/store';
+
+import { Spinner } from 'reactstrap';
+import TeamMatesList from '../../components/TeamMatesList';
+
+import styles from './index.module.scss';
 
 const mapStateToProps = (state: RootState) => ({
     isLoading: state.global.isLoading,
@@ -12,6 +20,7 @@ const mapStateToProps = (state: RootState) => ({
 
 const mapDispatch = {
     getTeamMates,
+    clearError,
 };
 
 const connector = connect(mapStateToProps, mapDispatch);
@@ -23,6 +32,7 @@ const TeamMates = ({
     error,
     teamMates,
     getTeamMates,
+    clearError,
 }: ReduxProps) => {
     const [ isSliderOpen, setIsSliderOpen ] = useState<boolean>(false);
 
@@ -34,9 +44,19 @@ const TeamMates = ({
     }, [teamMates])
 
     return (
-        <div className='p-2'>
-            <h1>elo</h1>
-        </div>
+        <React.Fragment>
+            <ErrorModal
+                error={error}
+                clearErrorHandler={clearError}
+            />
+            <div className={styles.container}>
+                {
+                    !isLoading && teamMates.length > 0
+                        ? <TeamMatesList teamMates={teamMates} />
+                        : <Spinner />
+                }
+            </div>
+        </React.Fragment>
     );
 };
 
