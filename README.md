@@ -20,6 +20,6 @@ bootstrapped with CRA
 ### Setup
 
 ```shell
-$ yarb install
+$ yarn install
 $ yarn start
 ```
