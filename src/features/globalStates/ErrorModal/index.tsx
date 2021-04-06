@@ -21,7 +21,7 @@ const ErrorModal = ({
     return (
         <Modal isOpen={isOpen} toggle={toggleModal}>
             <ModalHeader>
-                <span><strong>Oups!</strong> Somethig gone wrong... don't panic tho.</span>
+                <span><strong>Oups!</strong> Something gone wrong... don't panic tho.</span>
             </ModalHeader>
             <ModalBody>
                 {error}

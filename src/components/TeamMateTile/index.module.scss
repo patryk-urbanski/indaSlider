@@ -1,3 +1,5 @@
+@import '../../colors.scss';
+
 .tile {
     display: flex;
     align-items: center;
@@ -5,6 +7,7 @@
     width: 180px;
     position: relative;
     margin: 30px;
+    cursor: pointer;
 }
 
 .image {
@@ -21,7 +24,7 @@
 
 
 .shade {
-    background-color: #48C3DC;
+    background-color: $primary;
     position: absolute;
     top: 0;
     left: 0;
@@ -39,7 +42,7 @@
 
 .name {
     font-size: 20px;
-    color: #452E76;
+    color: $secondary;
     margin: 17px 0;
 }
 
@@ -50,11 +53,11 @@
 }
 
 .position {
-    color: #48C3DC;
+    color: $primary;
 }
 
 .location {
-    color: #808080;
+    color: $additional;
 }
 
 .iconContainer {
@@ -67,7 +70,7 @@
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background-color: #452E76;
+    background-color: $secondary;
     position: absolute;
     top: 10px;
     right: 0;

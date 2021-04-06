@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 
-import ErrorModal from '../../features/globalStates/ErrorModal';
+import DefaultLayout from '../../components/DefaultLayout';
 
 import { clearError } from '../../redux/methods/generic';
 import { getTeamMates } from '../../redux/methods/teamMates';
 import { RootState } from '../../redux/store';
 
 import { Spinner } from 'reactstrap';
-import TeamMatesList from '../../components/TeamMatesList';
+import TeamMatesList from '../../features/teamMates/TeamMatesList';
+import ErrorModal from '../../features/globalStates/ErrorModal';
 
 import styles from './index.module.scss';
 
@@ -34,8 +35,6 @@ const TeamMates = ({
     getTeamMates,
     clearError,
 }: ReduxProps) => {
-    const [ isSliderOpen, setIsSliderOpen ] = useState<boolean>(false);
-
     useEffect(() => {
         if(!teamMates || teamMates.length < 1) {
             getTeamMates()
@@ -44,7 +43,7 @@ const TeamMates = ({
     }, [teamMates])
 
     return (
-        <React.Fragment>
+        <DefaultLayout>
             <ErrorModal
                 error={error}
                 clearErrorHandler={clearError}
@@ -56,7 +55,7 @@ const TeamMates = ({
                         : <Spinner />
                 }
             </div>
-        </React.Fragment>
+        </DefaultLayout>
     );
 };
 

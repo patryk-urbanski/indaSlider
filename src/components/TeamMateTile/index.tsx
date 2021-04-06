@@ -34,7 +34,6 @@ const TeamMateTile = ({
             >
                 <FontAwesomeIcon icon={faEnvelope} color='#fff' />
             </button>
-
             <div className={styles.infoContainer}>
                 <span className={styles.name}>{teamMate.name}</span>
                 <span className={styles.position}>{teamMate.position}</span>

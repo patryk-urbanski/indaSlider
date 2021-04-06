@@ -6,7 +6,7 @@ import App from './App';
 import { store } from './redux/store';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
-
+import 'swiper/swiper-bundle.css';
 import { worker } from './mocks/browser';
 
 worker.start();
