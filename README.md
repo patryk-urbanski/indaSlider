@@ -3,8 +3,6 @@
 
 ### Team list with responsive slider
 
-## [LIVE DEMO](https://inda-slider.surge.sh/)
-
 ### Build with:
 - React
 - Typescript
