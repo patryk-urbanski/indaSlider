@@ -13,6 +13,7 @@
     background-image: url('../../assets/bg_slide.png');
     background-position: center;
     background-size: cover;
+    animation: fade .8s;
 
     &::before {
         position: absolute;
@@ -39,4 +40,14 @@
     position: absolute;
     top: 20px;
     right: 20px;
+}
+
+@keyframes fade {
+    from { 
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }

@@ -15,11 +15,15 @@ const TeamMatesList = ({
     teamMates
 }: Props) => {
     const [ isSliderOpen, setIsSliderOpen ] = useState<boolean>(false);
+    const [ initialSlide, setInitialSlide ] = useState<number>(0);
 
     //TODO: Replace placeholder when bussines established needs
     const handleMessageClick = () => console.log('message clicked placeholder');
 
-    const handleGeneralClick = () => setIsSliderOpen(true);
+    const handleGeneralClick = (initialSlide: number) => () => {
+        setInitialSlide(initialSlide);
+        setIsSliderOpen(true);
+    }
     return (
         <div className={styles.container}>
             <h1 className={styles.headline}>Meet our team</h1>
@@ -29,7 +33,7 @@ const TeamMatesList = ({
                         <TeamMateTile
                             key={`${teamMate.name}-${teamMate.position}-${index}`}
                             teamMate={teamMate}
-                            onClickGeneral={handleGeneralClick}
+                            onClickGeneral={handleGeneralClick(index)}
                             onClickMessage={handleMessageClick}
                         />
                     ))
@@ -39,6 +43,7 @@ const TeamMatesList = ({
                 isOpen={isSliderOpen}
                 setIsOpen={setIsSliderOpen}
                 teamMates={teamMates}
+                initialSlide={initialSlide}
             />
         </div>
     )

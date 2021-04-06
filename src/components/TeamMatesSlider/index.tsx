@@ -1,6 +1,7 @@
 import React from 'react';
 import SwiperCore, { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { useMediaQuery } from 'react-responsive';
 
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -13,7 +14,7 @@ interface Props {
     isOpen: boolean,
     setIsOpen: (isOpen: boolean) => void;
     teamMates: ITeamMate[];
-
+    initialSlide: number,
 }
 
 SwiperCore.use([Navigation]);
@@ -21,9 +22,11 @@ SwiperCore.use([Navigation]);
 const TeamMatesSlider = ({
     isOpen,
     setIsOpen,
-    teamMates
+    teamMates,
+    initialSlide,
 }: Props) => {
     const toggleModal = () => setIsOpen(!isOpen);
+    const isMobile = useMediaQuery({ query: `(max-width: 700px)` });
 
     return isOpen ? (
         <div className={styles.container}>
@@ -33,8 +36,10 @@ const TeamMatesSlider = ({
             <Swiper
                 spaceBetween={50}
                 slidesPerView={1}
-                navigation
+                navigation={!isMobile}
                 className={styles.slider}
+                loop
+                initialSlide={initialSlide}
             >
                 {
                     teamMates.map((mate, index) => (
